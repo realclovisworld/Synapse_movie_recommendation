@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Movie Recommender</h1>
+        <p>Get personalized movie suggestions powered by AI!</p>
+    </header>
+
+    <main>
+        <section id="input-section">
+            <form id="recommend-form">
+                <label for="genres">Select Genres (hold Ctrl/Cmd for multiple):</label>
+                <select id="genres" multiple>
+                    <option value="action">Action</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="animation">Animation</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="crime">Crime</option>
+                    <option value="documentary">Documentary</option>
+                    <option value="drama">Drama</option>
+                    <option value="family">Family</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="history">History</option>
+                    <option value="horror">Horror</option>
+                    <option value="music">Music</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="romance">Romance</option>
+                    <option value="science-fiction">Science Fiction</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="war">War</option>
+                    <option value="western">Western</option>
+                </select>
+
+                <label for="favorites">Favorite Movies (comma-separated titles):</label>
+                <input type="text" id="favorites" placeholder="e.g., Inception, The Matrix">
+
+                <button type="submit">Get Recommendations</button>
+            </form>
+        </section>
+
+        <section id="results-section">
+            <h2>Recommended Movies</h2>
+            <div id="movie-grid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Movie Recommender. Powered by xAI-inspired tech.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CineSage — Movie Recommendations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+ 
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-badge">C</div>
+        <div>CineSage</div>
+      </div>
+      <div class="searchbar" style="max-width:560px;">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21L15.8 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/></svg>
+        <input id="q" type="search" placeholder="Search for a movie, actor, or genre... (e.g. 'sci-fi')" autocomplete="off"/>
+      </div>
+      <div class="nav-right">
+        <button id="btn-login" class="pill" title="Set / switch user">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 20c2-3.5 6-4 8-4s6 .5 8 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span id="user-label">Guest</span>
+        </button>
+        <button id="btn-watchlist" class="pill" title="View watchlist">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 4h12a2 2 0 0 1 2 2v14l-8-4-8 4V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          Watchlist
+        </button>
+        <button id="btn-theme" class="pill" title="Toggle theme">🌙</button>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="main-hero">
+      <div class="hero-card">
+        <div class="hero-inner">
+          <div class="hero-left">
+            <h1 class="hero-title">Your AI‑powered movie guide</h1>
+            <p class="hero-sub">Discover films tailored to your taste. Search, filter, and rate — your Node.js backend + ML recommender does the magic.</p>
+            <div class="hero-actions">
+              <button class="btn" id="btn-surprise">Surprise Me 🎲</button>
+              <button class="btn secondary" id="btn-refresh">Refresh Feed ↻</button>
+            </div>
+          </div>
+          <div class="hero-right" style="padding: 22px; display: grid; gap: 12px; align-content: start;">
+            <div class="filters" id="filters">
+              <!-- dynamic chips injected by JS -->
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <label style="color:var(--muted); font-weight:700; font-size:12px;">Min. Rating</label>
+              <input id="minRating" type="range" min="0" max="10" value="0" step="0.5"/>
+              <span id="minRatingVal" style="font-weight:800;">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card" style="padding: 16px; display:grid; gap:10px;">
+        <div class="section-head"><h2>Trending Now</h2><span class="muted" id="trend-count">—</span></div>
+        <div class="row" id="row-trending"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>Recommended For You</h2><span class="muted" id="rec-hint">Based on your activity</span></div>
+      <div class="row" id="row-recs"></div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>Search Results</h2><span class="muted" id="search-hint">Try typing above</span></div>
+      <div class="row" id="row-search"></div>
+    </section>
+  </main>
+
+  <!-- Details Modal -->
+  <dialog id="modal">
+    <div class="modal-head">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <strong id="modal-title"></strong>
+        <span class="chip" id="modal-year"></span>
+      </div>
+      <button class="close" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" style="padding-top:12px;">
+      <div>
+        <div class="poster"><img id="modal-poster" alt="Poster"/></div>
+      </div>
+      <div style="display:grid; gap:12px;">
+        <div class="meta" id="modal-genres"></div>
+        <p id="modal-overview" style="margin:0; line-height:1.6; color:var(--text);"></p>
+        <div class="rating">
+          <strong>Rate:</strong>
+          <div class="stars" id="modal-stars" aria-label="Rate from 1 to 5">★ ★ ★ ★ ★</div>
+          <span class="muted" id="modal-rating-text"></span>
+        </div>
+        <div class="actions">
+          <button class="tiny brand" id="modal-add">Add to Watchlist</button>
+          <button class="tiny" id="modal-open">Open on TMDB</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    
+
+    
+
+    
+    
+  </script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/state.js"></script>
+  <script src="../js/helpers.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/events.js"></script>
+  <script src="../js/watchlist.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/util.js"></script>
+  <script src="../js/init.js"></script>
+</body>
+</html>
