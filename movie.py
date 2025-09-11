@@ -1,4 +1,4 @@
-# 📦 Import required libraries
+# Import required libraries
 import pandas as pd #data manipulation {reading and writing csv.files}
 import numpy as np #numerical computation{array ops, math funnctions}
 import torch #GPU acceleration, tensor ops{GPU COMPUTATION, creating and manupulating tensor}
@@ -6,12 +6,12 @@ import torch.nn as nn #neural networks module in pytorch
 from torch.utils.data import Dataset, DataLoader #data handling utilities
 import random #generating random numbers.
 
-# 📥 Step 1: Load TMDB movie metadata
+#  Step 1: Load TMDB movie metadata
 movies = pd.read_csv("C:/Users/user/OneDrive/Desktop/movie recomendation/tmdb_5000_movies.csv")
 movies = movies[['id', 'title', 'release_date']].dropna()
 movies.columns = ['item_id', 'title', 'release_date']
 
-# 🧪 Step 2: Simulate user ratings
+#  Step 2: Simulate user ratings
 num_users = 100 #sets no of stimulated users
 ratings = [] #initializes an empty list to store rating dictionaries
 for user_id in range(1, num_users + 1): #loops through user ids
